@@ -27,11 +27,13 @@ function setup() {
   //create title divs
   title = createDiv("Iannis Xenakis - Rebonds B");
   subtitle =  createDiv("Boris   Kish   Remix");
-  subtitle2 = createDiv("press any key to start");
+  subtitle2 = createDiv("click the mouse to start");
 }
+
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
 }
+
 
 //superclass for each instrument
 class Hit {
@@ -857,42 +859,50 @@ function randomPosition(xPos,yPos,radius,theta){
 
 //function to handle pausing/jumping audio time
 let jumpTime = 4*(30); //jump audio to this time (in seconds)
-function keyPressed() {
+// function keyPressed() {
+//
+//   if (audio.isPlaying()) {
+//     audio.pause();
+//   } else {
+//     audio.play();
+//   }
+//
+//   // if(key  === 'j'){  //press j to jump to specific time
+//   //   if (audio.isPlaying()) {
+//   //     audio.pause();
+//   //     onScreenHits.splice(0,onScreenHits.length);
+//   //   } else {
+//   //     audio.play();
+//   //     audio.jump(jumpTime, audio.duration()-jumpTime);
+//   //   }
+//   // }
+//   // if(key === ' '){ //press space to play/pause
+//   //   if (audio.isPlaying()) {
+//   //     audio.pause();
+//   //   } else {
+//   //     audio.play();
+//   //   }
+//   // }
+//   // if(key  === 'b'){
+//   //   if (audio.isPlaying()) {
+//   //     audio.pause();
+//   //   } else {
+//   //     audio.play();
+//   //     audio.jump(audio.currentTime()-4);
+//   //   }
+//   // }
+//   // if(key === 'w'){
+//   //   onScreenHits2.push(new WoodblockDouble());
+//   // }
+//
+// }
 
-  if (audio.isPlaying()) {
-    audio.pause();
-  } else {
-    audio.play();
-  }
-
-  // if(key  === 'j'){  //press j to jump to specific time
-  //   if (audio.isPlaying()) {
-  //     audio.pause();
-  //     onScreenHits.splice(0,onScreenHits.length);
-  //   } else {
-  //     audio.play();
-  //     audio.jump(jumpTime, audio.duration()-jumpTime);
-  //   }
-  // }
-  // if(key === ' '){ //press space to play/pause
-  //   if (audio.isPlaying()) {
-  //     audio.pause();
-  //   } else {
-  //     audio.play();
-  //   }
-  // }
-  // if(key  === 'b'){
-  //   if (audio.isPlaying()) {
-  //     audio.pause();
-  //   } else {
-  //     audio.play();
-  //     audio.jump(audio.currentTime()-4);
-  //   }
-  // }
-  // if(key === 'w'){
-  //   onScreenHits2.push(new WoodblockDouble());
-  // }
-
+function mouseClicked(){
+    if (audio.isPlaying()) {
+      audio.pause();
+    } else {
+      audio.play();
+    }
 }
 
 
@@ -923,7 +933,7 @@ function draw() {
    subtitle2.position(0,6.5*height/10);
  }
  else if(currentTime>-4 && currentTime<-1){
-   print('rgba(255,255,255,'+map(currentTime,-4,-1,1,0,)+')');
+   subtitle2.html("STARTING");
    title.style('color',  'rgba(255,255,255,'+map(currentTime,-4,-1,1,0,)+')');
    subtitle.style('color', 'rgba(255,255,255,'+map(currentTime,-4,-1,1,0,)+')');
    subtitle2.style('color', 'rgba(255,255,255,'+map(currentTime,-4,-1,1,0,)+')');
