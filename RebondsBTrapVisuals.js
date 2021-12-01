@@ -26,7 +26,7 @@ function setup() {
   woodblockToColor.create(5,'(255,127,0');
   //create title divs
   title = createDiv("Iannis Xenakis - Rebonds B");
-  subtitle =  createDiv("Boris   Kish   Remix");
+  subtitle =  createDiv("(Boris   Kish   Remix)");
   subtitle2 = createDiv("click the mouse to start");
 }
 
