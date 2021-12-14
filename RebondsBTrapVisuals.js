@@ -28,6 +28,7 @@ function setup() {
   title = createDiv("Iannis Xenakis - Rebonds B");
   subtitle =  createDiv("(Boris   Kish   Remix)");
   subtitle2 = createDiv("click the mouse to start");
+  pause = createDiv("PAUSED");
 }
 
 function windowResized() {
@@ -900,8 +901,17 @@ let jumpTime = 4*(30); //jump audio to this time (in seconds)
 function mouseClicked(){
     if (audio.isPlaying()) {
       audio.pause();
+      if(currentTime>-1){
+        pause.style('font-size', '10vh');
+        pause.style('width', '100vw');
+        pause.style('text-align', 'center');
+        pause.style('color', 'rgba(255,255,255,1)');
+        pause.position(0,.4*height);
+      }
     } else {
       audio.play();
+      pause.remove();
+      pause = createDiv("PAUSED");
     }
 }
 
@@ -932,7 +942,14 @@ function draw() {
    subtitle2.style('color', 'rgba(255,255,255,1)');
    subtitle2.position(0,6.5*height/10);
  }
- else if(currentTime>-4 && currentTime<-1){
+ // else if(!audio.isPlaying() && currentTime>-4){
+ //   pause.style('font-size', '10vh');
+ //   pause.style('width', '100vw');
+ //   pause.style('text-align', 'center');
+ //   pause.style('color', 'rgba(255,255,255,1)');
+ //   pause.position(0,4.5*height/10);
+ // }
+ else if(audio.isPlaying() && currentTime>-4 && currentTime<-1){
    subtitle2.html("STARTING");
    title.style('color',  'rgba(255,255,255,'+map(currentTime,-4,-1,1,0,)+')');
    subtitle.style('color', 'rgba(255,255,255,'+map(currentTime,-4,-1,1,0,)+')');
